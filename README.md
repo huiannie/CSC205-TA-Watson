@@ -36,9 +36,9 @@ Details on how to set up these services may be found in the
 <em>Watson's conversational agent starter kit </em>.
 
 In order for the application to bind to the services, the two services must have names that 
-match the service names listed in the `manifest.yml` file. 
-So the dialog service should be named <b>dialog-service</b> 
-and the classifier service should be named <b>natural-language-classifier-service</b>
+match the service names listed in the `manifest.yml` file. So: 
+- the dialog service should be named <b>dialog-service</b>, and
+- the classifier service should be named <b>natural-language-classifier-service</b>.
 
 
 ### How to train the classifier
