@@ -3,8 +3,8 @@
 This is a simple starter template for CSC205 students who want to start building an intelligent 
 Q&A agent for CSC205.
 
-Source: This template is modified from Watson's conversation starter kit provided by IBM under 
-the Apache2 license. 
+Source: This template is modified from Watson's conversational agent starter kit (see https://github.com/watson-developer-cloud/conversational-agent-application-starter-kit) 
+provided by IBM under the Apache2 license. 
 
 
 ### How it works
