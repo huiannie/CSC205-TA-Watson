@@ -85,14 +85,13 @@ in the `training/dialog_id` so that this dialog may be used permanently.
 
 ### Additional notes
 
+#### Unique URL
 When deploying this application to Bluemix, the application must have a unique URL. 
-To ensure this, open the `manifest.yml` file and change the host entry from
+To ensure this, open the `manifest.yml` file and change the line that contains host entry 
 
-<b> host: csc205-TA-Watson </b> 
+from: <b> host: csc205-TA-Watson </b> 
 
-to 
+to: <b> host: csc205-TA-Watson-${random-name} </b> where ${random-name} can be any random name 
 
-<b> host: csc205-TA-Watson-${random-name} </b>
-
-where ${random-name} can be any random name before building and deploying the application. 
+before building and deploying the application. 
 
