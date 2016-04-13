@@ -3,11 +3,11 @@
 This is a simple starter template for CSC205 students who want to start building an intelligent 
 Q&A agent for CSC205.
 
-Source: This template is modified from <it> Watson's conversational agent starter kit </it> (see https://github.com/watson-developer-cloud/conversational-agent-application-starter-kit) 
+Source: This template is modified from <em> Watson's conversational agent starter kit </em> (see https://github.com/watson-developer-cloud/conversational-agent-application-starter-kit) 
 provided by IBM under the Apache2 license. 
 
 Students interested in using this template to build the TA (teaching assistant) for CSC205 may use 
-the <it>Watson's conversational agent starter kit </it> as a warmup before starting on this project.
+the <em> Watson's conversational agent starter kit </em> as a warmup before starting on this project.
 
 ### How it works
 
@@ -33,12 +33,12 @@ profile of the dialog based on the classes computed by the classifier.
 The two Watson services required by this application are the Classifier and the Dialog.
 These two services must be added to the Bluemix account prior to development. 
 Details on how to set up these services may be found in the 
-<it>Watson's conversational agent starter kit </it>.
+<em>Watson's conversational agent starter kit </em>.
 
 In order for the application to bind to the services, the two services must be named that 
 match the service names listed in the `manifest.yml` file. 
-So the dialog service should be named <it>dialog-service</it> 
-and the classifier service should be named <it>natural-language-classifier-service</it>
+So the dialog service should be named <em>dialog-service</em> 
+and the classifier service should be named <em>natural-language-classifier-service</em>
 
 
 ### How to train the classifier
@@ -82,4 +82,13 @@ managing the dialogs may be found in `training/shell_scripts/dialog205.script`
 
 Once the dialog script has been satisfactorily developed, its dialog_id may be saved manually 
 in the `training/dialog_id` so that this dialog may be used permanently. 
+
+### Additional notes
+
+When deploying this application to Bluemix, the application must have a unique URL. 
+To ensure this, open the `manifest.yml` file and change the host entry from
+<em> host: csc205-TA-Watson </em> 
+to 
+<em> host: csc205-TA-Watson-<username> </em>
+or another other name before building and deploying the application. 
 
