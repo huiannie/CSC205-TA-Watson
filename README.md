@@ -89,6 +89,6 @@ When deploying this application to Bluemix, the application must have a unique U
 To ensure this, open the `manifest.yml` file and change the host entry from
 <b> host: csc205-TA-Watson </b> 
 to 
-<b> host: csc205-TA-Watson-<username> </b>
-or another other name before building and deploying the application. 
+<b> host: csc205-TA-Watson-${random-name} </b>, where ${random-name} can be any random name,
+before building and deploying the application. 
 
