@@ -1,0 +1,28 @@
+username="<username>"
+password="<password>"
+dialog_id="<dialog_id>"
+
+
+if [[ $# -eq 3 ]]
+then
+  input=$1
+  conversation_id=$2
+  client_id=$3
+
+  echo curl -u "$username":"$password" -X POST "https://gateway.watsonplatform.net/dialog/api/v1/dialogs/${dialog_id}/conversation" -d input="$input" -d conversation_id=$conversation_id -d client_id=$client_id
+  curl -u "$username":"$password" -X POST "https://gateway.watsonplatform.net/dialog/api/v1/dialogs/${dialog_id}/conversation" -d input="$input" -d conversation_id=$conversation_id -d client_id=$client_id
+
+
+elif [[ $# -eq 4 ]]
+then
+  input=$1
+  confidence=$2
+  conversation_id=$3
+  client_id=$4
+
+  echo curl -k -X PUT -H "content-type: application/json" -H "accept: application/json" -d "{'client_id':$client_id,'name_values':[{'name':'Class1','value': '$input'},{'name':'Class1_Confidence','value': '$confidence'}]}" -u "$username":"$password" "https://gateway.watsonplatform.net/dialog/api/v1/dialogs/${dialog_id}/profile"
+  curl -k -X PUT -H "content-type: application/json" -H "accept: application/json" -d "{'client_id':$client_id,'name_values':[{'name':'Class1','value': '$input'},{'name':'Class1_Confidence','value': '$confidence'}]}" -u "$username":"$password" "https://gateway.watsonplatform.net/dialog/api/v1/dialogs/${dialog_id}/profile"
+
+else
+  echo "usage: script input [confidence] conversation_id client_id"
+fi

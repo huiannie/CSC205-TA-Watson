@@ -1,0 +1,69 @@
+What is the difference between a word and a byte?,word
+When to use the term word?,word
+What does a 64-bit system mean?,word
+What does a 32-bit system mean?,word
+What is a nibble?,word
+What value is true or false?,boolean
+What is truth or falsehood?,boolean
+What is bool?,boolean
+What are bools?,boolean
+What is a boolean?,boolean
+What is boolean operation?,boolean
+How are booleans actually stored?,boolean
+What is a char?,character
+What are chars?,character
+What is a character?,character
+What are characters?,character
+What are ASCII codes?,character
+What is the difference between ASCII and unicode?,character
+What is the positional numbering system?,numberSystem
+What is numbers?,numberSystem
+What is a number?,numberSystem
+What is the binary system?,numberSystem
+What is the value of the binary number 111?,numberSystem
+How to convert numbers from base 10 to base 2?,numberSystem
+What is the relationship between a hexadecimal number and a binary number?,numberSystem
+How to convert between hexadecimal and binary?,numberSystem
+What is an integer?,int
+What are integers?,int
+What is an int?,int
+What are ints?,int
+How are integers represented in the computer?,int
+How are unsigned integers represented in the computer?,int
+How are signed integers represented in the computer?,int
+What is the signed magnitude system.,int
+What is the one's complement representation?,int
+What is the two's complement representation?,int
+What is complement systems?,int
+What is how to do integer arithmetic in the signed magnitude representation?,int
+What's wrong with the signed-magnitude integer system?,int
+What is how to do integer arithmetic in the one's complement representation?,int
+What is how to do integer arithmetic in the two's complement representation?,int
+How to detect overflow in a two's complement addition?,int
+When to do carry around in two's complement addition?,int
+Why is it not necessary to do carry around when doing two's complement addition?,int
+What is a float?,float
+What are floats?,float
+What is a double?,double
+What are doubles?,double
+What is a floating point number?,float
+What are floating point numbers?,float
+How to represent numbers that have magnitudes smaller than 1?,float
+How to represent floating point numbers?,float
+What are the differences between the floating point number system and the scientific notation?,float
+What is the exponent field of the floating point number?,float
+What is the significand field of the floating point number?,float
+What is the IEEE-754 float representation.,float
+What does it mean to have an implied one in the significand?,float
+What is the meaning of excess-127 in the floating point representation system?,float
+What is the bias in the exponent of the floating point representation?,float
+How to tell if a floating point number has a negative exponent?,float
+How to interpret the sign of a floating point number?,float
+What are the special values in the IEEE float?,float
+What is NAN?,float
+How to do floating point addition?,float
+How to test for 0 in floating point number?,float
+Why not use the two's complement system to represent the exponent field of the floating point number?,float
+What is underflow?,float
+What is a denormalized floating point number?,float
+How to convert a number to the IEEE-754 floating point format?,float

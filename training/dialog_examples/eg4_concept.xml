@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dialog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="WatsonDialogDocument_1.0.xsd">
+	<flow>
+		<folder label="Main" id="Main">
+			<output>
+				<prompt selectionType="RANDOM">
+					<item>This demo shows how to build nested Q and A.
+					 About CSC205 Chapter2, ask me about ASCII, integers or floating point numbers</item>
+				</prompt>
+				<goto ref="getUserInput_2449614"/>
+			</output>
+			<getUserInput id="getUserInput_2449614">
+				<search ref="folder_2449611"/>
+				<default>
+					<output>
+						<prompt selectionType="RANDOM">
+							<item>
+								I am sorry, I did not understand
+								your question. Please try asking
+								another one.
+							</item>
+						</prompt>
+					</output>
+				</default>
+			</getUserInput>
+		</folder>
+		<folder label="Library" id="Library">
+			<folder label="Live Content" id="folder_2449611">
+				<input>
+					<grammar>
+						<item>What are ASCII codes?</item>
+						<item>$ ASCII</item>
+					</grammar>
+					<output>
+						<prompt selectionType="RANDOM">
+							<item>
+							The ASCII codes are a character system. Every ASCII code is 8-bit in size.
+							Do you want to know more? 
+							</item>
+						</prompt>
+						<getUserInput>
+							<input>
+								<grammar>
+									<item>$ yes</item>
+									<item>$ please</item>
+									<item>$ sure</item>
+								</grammar>
+								<output>
+									<prompt selectionType="RANDOM">
+										<item>
+										There are all together 128 characters represented by this system. 
+										They are represented using the numbers 0 to 127. The characters 
+										representable in this system include all the uppercase characters, 
+										all the lowercase characters, the digits 0 to 9 and many special 
+										characters and punctuations. 
+										Do you want an example?
+										</item>
+									</prompt>
+									<getUserInput>
+										<input>
+											<grammar>
+												<item>$ yes</item>
+												<item>$ please</item>
+												<item>$ sure</item>
+											</grammar>
+											<output>
+												<prompt selectionType="RANDOM">
+													<item>
+													The character A in capital is represented by the ASCII code 65, 
+													while the character a in lowercase is represented by 97. 
+													The digit 0 corresponds to the ASCII code 48 and the digit 9 has 
+													the ASCII code valued 57. You may find all ASCII codes in a typical ASCII type.
+													</item>
+												</prompt>
+											</output>
+										</input>
+									</getUserInput>										
+								</output>
+							</input>
+							<input>
+								<grammar>
+									<item>$ no</item>
+								</grammar>
+								<output>
+									<prompt selectionType="RANDOM">
+										<item>Okay. Ask me any time.</item>
+									</prompt>
+								</output>
+							</input>
+						</getUserInput>
+					</output>
+				</input>
+				<input>
+					<grammar>
+						<item>$ int</item>
+						<item>$ long</item>
+					</grammar>
+					<output>
+						<prompt selectionType="RANDOM">
+							<item>
+							An integer data type (either an int or a long) is a computer representation 
+							of an integer using a fixed number of bytes. 
+							An integer can be positive or negative. 
+							</item>							
+						</prompt>
+					</output>
+				</input>
+				<input>
+					<grammar>
+						<item>$ float</item>
+						<item>$ double</item>
+					</grammar>
+					<output>
+						<prompt selectionType="RANDOM">
+							<item>A float or double is a "floating point number" data type commonly used to represent real numbers. 
+							This data type has fixed size.
+							</item>
+						</prompt>
+					</output>
+				</input>
+				
+			</folder>
+			<folder label="Storage" id="Storage"></folder>
+		</folder>
+		<folder label="Concepts" id="Concepts">
+			<concept>
+				<grammar>
+					<item>int</item>
+					<item>integer</item>
+					<item>integers</item>
+				</grammar>
+			</concept>
+			<concept>
+				<grammar>
+					<item>long</item>
+					<item>longs</item>
+				</grammar>
+			</concept>
+			<concept>
+				<grammar>
+					<item>floating point</item>
+					<item>floating point numbers</item>
+					<item>floating point number</item>
+					<item>float</item>
+					<item>floats</item>
+				</grammar>
+			</concept>
+			<concept>
+				<grammar>
+					<item>double</item>
+					<item>doubles</item>
+				</grammar>
+			</concept>
+		</folder>
+	</flow>
+	<settings>
+	    <setting name="DISPLAYNAME" type="USER">test</setting>
+        <setting name="RETURNTOCHATNODEID" type="USER">0</setting>
+        <setting name="PERSONALITYTYPEID" type="USER">6</setting>
+        <setting name="SENDCHATEMAIL" type="USER">false</setting>
+        <setting name="CACHE" type="USER">true</setting>
+        <setting name="AUTOLEARN" type="USER">false</setting>
+        <setting name="LANGUAGE" type="USER">EN</setting>
+        <setting name="RESPONSETIME" type="USER">-2</setting>
+        <setting name="MAXAUTOLEARNITEMS" type="USER">4</setting>
+        <setting name="NUMAUTOSETRELATED" type="USER">0</setting>
+        <setting name="TIMEZONEID" type="USER">Europe/Prague</setting>
+        <setting name="AUTOSETRELATEDNODEID" type="USER">0</setting>
+        <setting name="INPUTMASKTYPE" type="USER">0</setting>
+        <setting name="CONCEPTMATCHING" type="USER">0</setting>
+        <setting name="USE_CONCEPTS">3</setting>
+        <setting name="AL_NONE_LABEL">None of the above</setting>
+        <setting name="DYNAMIC_MESSAGING">false</setting>
+        <setting name="DEFAULT_DNR_RETURN_POINT_CANDIDATE">-1</setting>
+        <setting name="ENTITIES_SCOPE">3</setting>
+        <setting name="MULTISENT">0</setting>
+        <setting name="REPORT_SCRIPT_ID">0</setting>
+        <setting name="DNR_NODE_ID">-16</setting>
+        <setting name="DEFAULT_POINT_NODE_ID">2</setting>
+	</settings>
+</dialog>

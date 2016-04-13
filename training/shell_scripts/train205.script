@@ -1,0 +1,43 @@
+
+if [[ $# -eq 4  && $4 = "train" ]]
+then
+  username=$1
+  password=$2
+  datafile=$3
+
+  echo "username=$username"
+  echo "password=$password"
+  echo "datafile=$datafile"
+
+  echo curl -i -u "$username":"$password" -F training_data=@${datafile} -F training_metadata="{\"language\":\"en\",\"name\":\"csc205-$datafile\"}"  "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers"
+  curl -i -u "$username":"$password" -F training_data=@${datafile} -F training_metadata="{\"language\":\"en\",\"name\":\"csc205-$datafile\"}"  "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers"
+
+elif [[ $# -eq 4  && $4 = "check" ]]
+then
+  username=$1
+  password=$2
+  classifier_id=$3
+  echo curl -u "$username":"$password" "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/$classifier_id"
+  curl -u "$username":"$password" "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/$classifier_id"
+
+elif [[ $# -eq 4  && $4 = "delete" ]]
+then
+  username=$1
+  password=$2
+  classifier_id=$3
+  echo curl -X DELETE -u "$username":"$password" "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/$classifier_id"
+  curl -X DELETE -u "$username":"$password" "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/$classifier_id"
+
+elif [[ $# -eq 2 ]]
+then
+  username=$1
+  password=$2
+  echo curl -u "$username":"$password" "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers"
+  curl -u "$username":"$password" "https://gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers"
+
+
+
+else
+    echo "Usage: script  username  password  datafile|classifier_id  train|check|delete"
+    echo "Usage: script  username  password"
+fi

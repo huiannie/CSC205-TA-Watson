@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dialog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="WatsonDialogDocument_1.0.xsd">
+	<flow>
+		<folder label="Main" id="Main">
+			<output>
+				<prompt selectionType="RANDOM">
+					<item>Hello, I am your CSC205 TA. How may I help you today?</item>
+				</prompt>
+				<goto ref="getUserInput_start"/>
+			</output>
+			<getUserInput id="getUserInput_start">
+				<output>
+                    <action varName="Previous_Class" operator="SET_TO">{Class1}</action>
+					<prompt>
+						<item>You have asked about the {Class1} class. </item>
+					</prompt>
+                    
+                    <if matchType="ANY" id="profileCheck_2531803">
+                        <cond varName="Class1_Confidence" operator="GREATER_THEN">0.90</cond>
+                        <cond varName="Class1_Confidence" operator="EQUALS">0.90</cond>
+                        <if>
+                        	<cond varName="Class1" operator="EQUALS">word</cond>
+	                        <goto ref="folder_word"/>
+                        </if>
+                        <if>
+                        	<cond varName="Class1" operator="EQUALS">boolean</cond>
+	                        <goto ref="folder_boolean"/>
+                        </if>
+                        <if>
+                        	<cond varName="Class1" operator="EQUALS">character</cond>
+	                        <goto ref="folder_character"/>
+                        </if>
+                        <if>
+                        	<cond varName="Class1" operator="EQUALS">numberSystem</cond>
+	                        <goto ref="folder_numberSystem"/>
+                        </if>
+                        <if>
+                        	<cond varName="Class1" operator="EQUALS">int</cond>
+	                        <goto ref="folder_int"/>
+                        </if>
+                        <if>
+                        	<cond varName="Class1" operator="EQUALS">float</cond>
+	                        <goto ref="folder_float"/>
+                        </if>
+                    </if>
+                    
+                    <output id="output_lost">
+                        <prompt selectionType="SEQUENTIAL">
+                            <item>I'm not sure what you mean. Try asking me about one of the topics like &lt;i&gt;character, positional numbering system, integers, floating point numbers &lt;/i&gt;</item>
+                        </prompt>
+                    </output>
+				</output>
+			</getUserInput>
+		</folder>
+		<folder label="Library" id="folder_library">
+		
+			<folder label="word" id="folder_word">
+				<input>
+					<grammar>
+						<item>teach * word</item>
+						<item>teach word</item>
+						<item>when * to use * word</item>
+					</grammar>
+					<output>
+						<prompt selectionType="RANDOM">
+							<item>We use the term word to refer to the smallest addressable unit of storage in a system. Common word sizes are two multiples of bytes. When you hear people say "a 64-bit system", what they mean is that the word size of this system is eight bytes because 64 bits is equivalent to eight bytes.</item>
+						</prompt>
+					</output>
+				</input>
+				<input>
+					<grammar>
+						<item>$ difference * word * byte</item>
+					</grammar>
+					<output>
+						<prompt selectionType="RANDOM">
+							<item>A word is a contiguous group of bytes. A byte is exactly one byte. So a word can be more than 1 byte.</item>
+						</prompt>
+					</output>
+				</input>
+				<goto ref="folder_train"/>
+			</folder>
+
+			<folder label="boolean" id="folder_boolean">
+				<input>
+					<grammar>
+						<item>$ teach * boolean</item>
+						<item>$ teach boolean</item>
+					</grammar>
+					<output>
+						<prompt selectionType="RANDOM">
+							<item>The term boolean may refer to a data type or a variable of this data type. The boolean type has the value true or false. The value TRUE is often represented by 1, while the value FALSE is often represented by 0.</item>
+						</prompt>
+					</output>
+				</input>
+				<goto ref="folder_train"/>
+			</folder>
+
+			<folder label="character" id="folder_character">
+				<input>
+					<grammar>
+						<item>$ teach * ASCII</item>
+						<item>$ teach ASCII</item>
+					</grammar>
+					<output>
+						<prompt selectionType="RANDOM">
+						<item>The ASCII codes are a character system. It is 8-bit in size. There are all together 128 characters represented by this system. They are represented using the numbers 0 to 127. The characters representable in this system include all the uppercase characters, all the lowercase characters, the digits 0 to 9 and many special characters and punctuations. The character A in capital is represented by the ASCII code 65, while the character a in lowercase is represented by 97. The digit 0 corresponds to the ASCII code 48 and the digit 9 has the ASCII code valued 57. You may find all ASCII codes in a typical ASCII type.</item>
+						</prompt>
+					</output>
+				</input>
+				<input>
+					<grammar>
+						<item>$ difference * ASCII * unicode</item>
+					</grammar>
+					<output>
+						<prompt selectionType="RANDOM">
+							<item>Both the ASCII and the unicode are character systems. The ASCII system is 1-byte in size while the unicode system is 2-byte in size. The unicode system is an extension of the ASCII system. The lowest-numbered unicode characters comprise the ASCII code. The rest of the unicode system covers other character types such as the symbols, and the Chinese, Japanese and Korean language groups. The highest-numbered section of the unicode system supports user-defined characters.</item>
+						</prompt>
+					</output>
+				</input>
+				<goto ref="folder_train"/>
+			</folder>
+		
+			<folder label="numberSystem" id="folder_numberSystem">
+				<input>
+					<grammar>
+						<item>$ teach * numberSystem</item>
+						<item>$ teach numberSystem</item>
+					</grammar>
+					<output>
+						<prompt selectionType="RANDOM">
+							<item>The positional numbering system uses the position of each digit to represent the value of that digit. In the positional numbering system, the position of the digits is determined with reference to the radix point. To the left of the radix point, the digits are labeled as position 0, 1, 2 and so on. To the right of the radix point, the numbering starts from -1 and decreases progressively. The value represented by a digit at a certain position is equal to the digit multiplied by the base raised to the power of the position of the digit. Consider the decimal system as an example. The base is 10. In the decimal system, the number 74 has two digits. The digit at position 0 is 4. So it represents the value 4 multiplied by 10 raised to the power of 0. The digit at position 1 is 7. So it represents value 7 multiplied by 10 raised to be power of 1. Therefore, 74 in the decimal system is equivalent to 7 times 10 to the power of 1 plus 4 times 10 to the power of 0. </item>
+						</prompt>
+					</output>
+				</input>
+				<goto ref="folder_train"/>
+			</folder>
+		
+			<folder label="int" id="folder_int">
+				<input>
+					<grammar>
+						<item>$ teach * int</item>
+						<item>$ teach int</item>
+						<item>how * integer presented</item>
+					</grammar>
+					<output>
+						<prompt selectionType="RANDOM">
+							<item>Integers may be represented as either unsigned or signed numbers. The unsigned numbers are represented in binary form with fixed sizes. Typical sizes of unsigned integers are 32-bit and 64-bit. Signed integers are also represented in binary forms with fixed sizes, typically using 32 or 64 bits. 
+							I can tell you more about either the signed or the unsigned integers. Which one do you want to learn more? 
+							</item>
+						</prompt>
+						<getUserInput>
+							<input>
+								<grammar>
+									<item>$ unsigned </item>
+								</grammar>
+								<goto ref="info_int_unsigned"></goto>
+							</input>
+							<input>
+								<grammar>
+									<item>$ signed </item>
+								</grammar>
+								<goto ref="info_int_signed"/>
+							</input>
+							<default><goto ref="folder_restart"/></default>
+						</getUserInput>
+					</output>
+				</input>
+				
+				<input>
+					<grammar>
+						<item>$ unsigned int</item>
+					</grammar>
+					<output id="info_int_unsigned">
+						<prompt selectionType="RANDOM">
+							<item>Unsigned integers are represented in binary form. In a computer, an unsigned integer data type must have fixed number of bits. If a number needs more bits than is available by the data type, then overflow occurs.
+							Do you want to see and example?
+							</item>
+						</prompt>
+						<getUserInput>
+							<input>
+								<grammar>
+									<item>$ yes </item>
+								</grammar>
+								<output>
+									<prompt selectionType="RANDOM">
+										<item>Lets consider a small example. An unsigned integer data type of 8 bits in size can represent numbers from 0 to 255. 0 is represented as 00000000. 255 is represented as 11111111. The number 5 is 101 in binary. So it is represented as 00000101 using the 8-bit unsigned data type.
+										
+										</item>
+									</prompt>
+									<goto ref="folder_restart"/>
+								</output>
+							</input>
+							<default><goto ref="folder_restart"/></default>
+						</getUserInput>
+					</output>
+				</input>
+
+
+				<input>
+					<grammar>
+						<item>$ signed int</item>
+					</grammar>
+					<output id="info_int_signed">
+						<prompt selectionType="RANDOM">
+							<item>Signed integers are represented in binary form. The signed integer date type has fixed number of bits. There are three different systems of representation of signed integers. 
+							Do you want to know about them?
+							</item>
+						</prompt>
+						<getUserInput>
+							<input>
+								<grammar>
+									<item>$ yes </item>
+								</grammar>
+								<output>
+									<prompt selectionType="RANDOM">
+										<item>The three signed integer presentation systems are called the signed-magnitude presentation, the one's complement presentation, and the two's complement presentation. 
+										If you want to know more, tell me which one you want to know.
+										</item>
+									</prompt>
+									<getUserInput>
+										<input>
+											<grammar>
+												<item>$ signed-magnitude</item>
+											</grammar>
+											<goto ref="info_int_signedmagnitude"/>
+										</input>
+										<input>
+											<grammar>
+												<item>$ one's complement</item>
+											</grammar>
+											<goto ref="info_int_onescomplement"/>
+										</input>
+										<input>
+											<grammar>
+												<item>$ two's complement</item>
+											</grammar>
+											<goto ref="info_int_twoscomplement"/>
+										</input>
+										<default><goto ref="folder_restart"/></default>
+									</getUserInput>
+								</output>
+							</input>
+							<default><goto ref="folder_restart"/></default>
+						</getUserInput>
+					</output>
+				</input>
+				
+				<input>
+					<grammar>
+						<item>$ signed-magnitude </item>
+						<item>$ signed magnitude </item>
+					</grammar>
+					<output id="info_int_signedmagnitude">
+						<prompt selectionType="RANDOM">
+							<item>In the signed-magnitude presentation for signed integers, the leftmost bit in the data type is the sign. The rest of the bits are used to store the magnitude of the number. For the sign, 0 means positive and 1 means negative. 
+							If the data type is 8-bit long, the positive number 5 is represented as 00000101, while the negative number 5 is represented as 10000101.
+							</item>
+						</prompt>
+						<goto ref="folder_restart"/>
+					</output>
+				</input>
+
+				<input>
+					<grammar>
+						<item>$ one's complement</item>
+						<item>$ one's-complement</item>
+					</grammar>
+					<output id="info_int_onescomplement">
+						<prompt selectionType="RANDOM">
+							<item>In the one's complement presentation for signed integers, the positive numbers are represented in the same manner as unsigned integers. The negative numbers are represented as the one's complements of their positive counterparts.
+							 If the data type is 8-bit long, the positive number 5 is represented as 00000101, while the negative number 5 is represented as 11111010.
+							</item>
+						</prompt>
+						<goto ref="folder_restart"/>
+					</output>
+				</input>
+
+				<input>
+					<grammar>
+						<item>$ two's complement</item>
+						<item>$ two's-complement</item>
+					</grammar>
+					<output id="info_int_twoscomplement">
+						<prompt selectionType="RANDOM">
+							<item>In the two's complement presentation for signed integers, the positive numbers are represented in the same manner as unsigned integers. The negative numbers are represented as the two's complements of their positive counterparts.
+							 If the data type is 8-bit long, the positive number 5 is represented as 00000101, while the negative number 5 is represented as 11111011.
+							</item>
+						</prompt>
+						<goto ref="folder_restart"/>
+					</output>
+				</input>
+				
+				<goto ref="folder_train"/>
+			</folder>
+			
+			
+
+		
+			<folder label="float" id="folder_float">
+				<input>
+					<grammar>
+						<item>$ teach * float</item>
+						<item>$ teach float</item>
+					</grammar>
+					<output>
+						<prompt selectionType="RANDOM">
+							<item>Floating point numbers are the machine's way of emulating real numbers.</item>
+						</prompt>
+						<goto ref="folder_restart"/>
+					</output>
+				</input>
+				<goto ref="folder_train"/>
+			</folder>
+			
+			<folder label="train" id="folder_train">
+				<output>
+					<prompt selectionType="RANDOM">
+						<item>I have not yet been trained to answer all your questions about {Class1}. Please ask my creator to train me on this subject.</item>
+					</prompt>
+					<goto ref="folder_restart"/>
+				</output>				
+			</folder>
+
+			<folder label="train" id="folder_restart">
+				<goto ref="getUserInput_start"/>
+			</folder>
+
+			<folder label="preset" id="preset">
+			    <action varName="Class1" operator="SET_TO">int</action>
+			    <action varName="Class1_Confidence" operator="SET_TO">0.95</action>
+			    <goto ref="getUserInput_start"/>		
+			</folder>
+			
+			<folder label="Storage" id="Storage"></folder>
+		</folder>
+		<folder label="Concepts" id="Concepts">
+			<folder label="Concept_technical" id="Concept_technical">
+			<concept>
+				<grammar>
+					<item>word</item>
+					<item>words</item>
+					<item>word size</item>
+					<item>word sizes</item>
+				</grammar>
+			</concept>
+
+			<concept>
+				<grammar>
+					<item>boolean</item>
+					<item>booleans</item>
+					<item>bool</item>
+					<item>bools</item>
+				</grammar>
+			</concept>
+
+			<concept>
+				<grammar>
+					<item>character</item>
+					<item>characters</item>
+					<item>char</item>
+					<item>chars</item>
+				</grammar>
+			</concept>
+
+			<concept>
+				<grammar>
+					<item>numberSystem</item>
+					<item>positional numbering system</item>
+					<item>positional numbering systems</item>
+					<item>number system</item>
+					<item>number systems</item>
+				</grammar>
+			</concept>
+			
+			<concept>
+				<grammar>
+					<item>int</item>
+					<item>ints</item>
+					<item>integer</item>
+					<item>integers</item>
+				</grammar>
+			</concept>
+			<concept>
+				<grammar>
+					<item>long</item>
+					<item>longs</item>
+				</grammar>
+			</concept>
+			<concept>
+				<grammar>
+					<item>float</item>
+					<item>floats</item>
+					<item>floating point</item>
+					<item>floating point numbers</item>
+					<item>floating point number</item>
+				</grammar>
+			</concept>
+			<concept>
+				<grammar>
+					<item>double</item>
+					<item>doubles</item>
+				</grammar>
+			</concept>		
+			</folder>
+			<folder label="Concept_converse" id="Concept_converse">
+			<concept>
+				<grammar>
+					<item>teach</item>
+					<item>tell me</item>
+					<item>what is</item>
+					<item>what are</item>
+					<item>explain</item>
+					<item>know</item>
+				</grammar>
+			</concept>
+			<concept>
+				<grammar>
+					<item>yes</item>
+					<item>sure</item>
+					<item>ok</item>
+					<item>great</item>
+				</grammar>
+			</concept>
+			<concept>
+				<grammar>
+					<item>no</item>
+					<item>no thanks</item>
+					<item>no please</item>
+					<item>nevermind</item>
+				</grammar>
+			</concept>
+			</folder>
+		</folder>
+	</flow>
+	
+	
+	<variables>
+		<var_folder name="Home">
+		    <var_folder name="Classifier" type="VAR">
+                <var name="Class1_Confidence" type="NUMBER"
+                    initValue="0" description="Confidence score for Class1 from NL classifier"/>
+                <var name="Class2_Confidence" type="NUMBER"
+                    initValue="0" description="Confidence score for Class2 from NL classifier"/>
+                <var name="Previous_Class" type="TEXT" description="Place to store utterance class"/>
+                <var name="Array_Lookup" type="TEXT"
+                    initValue="
+                    &lt;word>word&lt;/word>
+                    &lt;boolean>boolean&lt;/boolean>
+                    &lt;character>character&lt;/character>
+                    &lt;numberSystem>numberSystem&lt;/numberSystem>
+                    &lt;int>int&lt;/int>
+                    &lt;float>float&lt;/float>
+                    "
+                    description="For matching Class1 to Class1_Text"/>
+                <var name="Node_Class" type="TEXT"/>
+                <var name="Class1" type="TEXT"/>
+                <var name="Class2" type="TEXT"/>
+            </var_folder>
+		
+		</var_folder>
+	</variables>
+	
+	<settings>
+	    <setting name="DISPLAYNAME" type="USER">test</setting>
+        <setting name="RETURNTOCHATNODEID" type="USER">0</setting>
+        <setting name="PERSONALITYTYPEID" type="USER">6</setting>
+        <setting name="SENDCHATEMAIL" type="USER">false</setting>
+        <setting name="CACHE" type="USER">true</setting>
+        <setting name="AUTOLEARN" type="USER">false</setting>
+        <setting name="LANGUAGE" type="USER">EN</setting>
+        <setting name="RESPONSETIME" type="USER">-2</setting>
+        <setting name="MAXAUTOLEARNITEMS" type="USER">4</setting>
+        <setting name="NUMAUTOSETRELATED" type="USER">0</setting>
+        <setting name="TIMEZONEID" type="USER">Europe/Prague</setting>
+        <setting name="AUTOSETRELATEDNODEID" type="USER">0</setting>
+        <setting name="INPUTMASKTYPE" type="USER">0</setting>
+        <setting name="CONCEPTMATCHING" type="USER">0</setting>
+        <setting name="USE_CONCEPTS">3</setting>
+        <setting name="AL_NONE_LABEL">None of the above</setting>
+        <setting name="DYNAMIC_MESSAGING">false</setting>
+        <setting name="DEFAULT_DNR_RETURN_POINT_CANDIDATE">-1</setting>
+        <setting name="ENTITIES_SCOPE">3</setting>
+        <setting name="MULTISENT">0</setting>
+        <setting name="REPORT_SCRIPT_ID">0</setting>
+        <setting name="DNR_NODE_ID">-16</setting>
+        <setting name="DEFAULT_POINT_NODE_ID">2</setting>
+	</settings>
+</dialog>

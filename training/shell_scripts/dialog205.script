@@ -1,0 +1,42 @@
+
+if [[ $# -eq 4  && $4 = "post" ]]
+then
+  username=$1
+  password=$2
+  datafile=$3
+  date=`date +%s`
+
+  echo "username=$username"
+  echo "password=$password"
+  echo "datafile=$datafile"
+
+  echo curl -X POST --form "file=@${datafile}" --form "name=dialog-$date" https://gateway.watsonplatform.net/dialog/api/v1/dialogs -u "$username:$password"
+  curl -X POST --form "file=@${datafile}" --form "name=dialog-$date" https://gateway.watsonplatform.net/dialog/api/v1/dialogs -u "$username:$password"
+
+elif [[ $# -eq 4  && $4 = "check" ]]
+then
+  username=$1
+  password=$2
+  dialog_id=$3
+
+elif [[ $# -eq 4  && $4 = "delete" ]]
+then
+  username=$1
+  password=$2
+  dialog_id=$3
+
+  echo curl -X DELETE -u "$username":"$password" "https://gateway.watsonplatform.net/dialog/api/v1/dialogs/$dialog_id"
+  curl -X DELETE -u "$username":"$password" "https://gateway.watsonplatform.net/dialog/api/v1/dialogs/$dialog_id"
+
+elif [[ $# -eq 2 ]]
+then
+  username=$1
+  password=$2
+
+  echo curl -u "$username":"$password" "https://gateway.watsonplatform.net/dialog/api/v1/dialogs"
+  curl -u "$username":"$password" "https://gateway.watsonplatform.net/dialog/api/v1/dialogs"
+
+else
+    echo "Usage: script  username  password  datafile|dialog_id  post|check|delete"
+    echo "Usage: script  username  password"
+fi

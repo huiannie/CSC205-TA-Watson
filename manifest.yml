@@ -1,0 +1,21 @@
+---
+declared-services:
+  dialog-service:
+    label: dialog
+    plan: standard
+  classifier-service:
+    label: natural_language_classifier
+    plan: standard
+applications:
+- services:
+  - dialog-service
+  - natural-language-classifier-service
+  name: csc205
+  command: npm start
+  path: .
+  memory: 512M
+  env:
+    NODE_ENV: production
+    SECURE_EXPRESS: 1
+    NPM_CONFIG_PRODUCTION: false
+  host: csc205

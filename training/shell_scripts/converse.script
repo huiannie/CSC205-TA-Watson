@@ -1,0 +1,63 @@
+# Specify default username and password
+# The user must provide dialog_id, conversation_id and client_id.
+# The script will go through an infinite loop with ">" as the prompt.
+# When input has 2 arguments and the 2nd argument is a number, use it to set Class1 and Class1_Confidence
+# Otherwise, post input for conversation.
+# To exit the loop, type q and press enter.
+
+username="<username>"
+password="<password>"
+
+#regular expression for matching numbers
+num='^[0-9]+([.][0-9]+)?$'
+
+if [[ $# -eq 3 ]]
+then
+  dialog_id=$1
+  conversation_id=$2
+  client_id=$3
+
+  flag=1
+  while [ $flag -eq 1 ]
+  do
+    echo -n "> "
+    read text
+
+    # Set the text as $1, $2 and so on
+    set -- junk $text
+    shift
+
+    if [[ $# -eq 1 && $1 = "q" ]]
+    then
+      flag=0
+
+    elif [[ $# -eq 2 && $2 =~ $num ]]
+    then
+      input=$1
+      confidence=$2
+      
+      echo curl -k -X PUT -H "content-type: application/json" -H "accept: application/json" -d "{'client_id':$client_id,'name_values':[{'name':'Class1','value': '$input'},{'name':'Class1_Confidence','value': '$confidence'}]}" -u "$username":"$password" "https://gateway.watsonplatform.net/dialog/api/v1/dialogs/${dialog_id}/profile"
+
+      curl -k -X PUT -H "content-type: application/json" -H "accept: application/json" -d "{'client_id':$client_id,'name_values':[{'name':'Class1','value': '$input'},{'name':'Class1_Confidence','value': '$confidence'}]}" -u "$username":"$password" "https://gateway.watsonplatform.net/dialog/api/v1/dialogs/${dialog_id}/profile"
+
+      echo
+
+    else
+      input=$text
+
+      # Be careful below: The echoed command and the actual command are not the same because of the double quote. 
+
+      echo curl -u "$username":"$password" -X POST "https://gateway.watsonplatform.net/dialog/api/v1/dialogs/${dialog_id}/conversation" -d input=\"$input\" -d conversation_id=$conversation_id -d client_id=$client_id
+
+      curl -u "$username":"$password" -X POST "https://gateway.watsonplatform.net/dialog/api/v1/dialogs/${dialog_id}/conversation" -d input="$input" -d conversation_id=$conversation_id -d client_id=$client_id
+
+      echo
+
+    fi
+
+  done
+
+
+else
+  echo "usage: script dialog_id conversation_id client_id"
+fi

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dialog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="WatsonDialogDocument_1.0.xsd">
+	<flow>
+		<folder label="Main" id="Main">
+			<output>
+				<prompt selectionType="RANDOM">
+					<item>This demo shows how to build multiple Q and A.
+					 About CSC205 Chapter2, ask me about ASCII, integers, or floats</item>
+				</prompt>
+				<goto ref="getUserInput_2449614"/>
+			</output>
+			<getUserInput id="getUserInput_2449614">
+				<search ref="folder_2449611"/>
+				<default>
+					<output>
+						<prompt selectionType="RANDOM">
+							<item>
+								I am sorry, I did not understand
+								your question. Please try asking
+								another one.
+							</item>
+						</prompt>
+					</output>
+				</default>
+			</getUserInput>
+		</folder>
+		<folder label="Library" id="Library">
+			<folder label="Live Content" id="folder_2449611">
+				<input>
+					<grammar>
+						<item>What are ASCII codes?</item>
+						<item>$ ASCII</item>
+					</grammar>
+					<output>
+						<prompt selectionType="RANDOM">
+							<item>The ASCII codes are a character system. Every ASCII code is 8-bit in size. 
+							</item>
+						</prompt>
+					</output>
+				</input>
+				<input>
+					<grammar>
+						<item>What are integers?</item>
+						<item>$ integer</item>
+						<item>$ integers</item>
+					</grammar>
+					<output>
+						<prompt selectionType="RANDOM">
+							<item>An integer is just a number. It can be positive or negative. But an integer data type is a computer representation of an integer using a fixed number of bytes. 
+							</item>
+						</prompt>
+					</output>
+				</input>
+				<input>
+					<grammar>
+						<item>What are floats?</item>
+						<item>$ float</item>
+						<item>$ floats</item>
+						<item>$ floating point</item>
+					</grammar>
+					<output>
+						<prompt selectionType="RANDOM">
+							<item>A float is a data type commonly used to represent real numbers. A float data type has fixed size.
+							</item>
+						</prompt>
+					</output>
+				</input>
+				
+			</folder>
+			<folder label="Storage" id="Storage"></folder>
+		</folder>
+		<folder label="Concepts" id="Concepts"></folder>
+	</flow>
+	<settings>
+	    <setting name="DISPLAYNAME" type="USER">test</setting>
+        <setting name="RETURNTOCHATNODEID" type="USER">0</setting>
+        <setting name="PERSONALITYTYPEID" type="USER">6</setting>
+        <setting name="SENDCHATEMAIL" type="USER">false</setting>
+        <setting name="CACHE" type="USER">true</setting>
+        <setting name="AUTOLEARN" type="USER">false</setting>
+        <setting name="LANGUAGE" type="USER">EN</setting>
+        <setting name="RESPONSETIME" type="USER">-2</setting>
+        <setting name="MAXAUTOLEARNITEMS" type="USER">4</setting>
+        <setting name="NUMAUTOSETRELATED" type="USER">0</setting>
+        <setting name="TIMEZONEID" type="USER">Europe/Prague</setting>
+        <setting name="AUTOSETRELATEDNODEID" type="USER">0</setting>
+        <setting name="INPUTMASKTYPE" type="USER">0</setting>
+        <setting name="CONCEPTMATCHING" type="USER">0</setting>
+        <setting name="USE_CONCEPTS">3</setting>
+        <setting name="AL_NONE_LABEL">None of the above</setting>
+        <setting name="DYNAMIC_MESSAGING">false</setting>
+        <setting name="DEFAULT_DNR_RETURN_POINT_CANDIDATE">-1</setting>
+        <setting name="ENTITIES_SCOPE">3</setting>
+        <setting name="MULTISENT">0</setting>
+        <setting name="REPORT_SCRIPT_ID">0</setting>
+        <setting name="DNR_NODE_ID">-16</setting>
+        <setting name="DEFAULT_POINT_NODE_ID">2</setting>
+	</settings>
+</dialog>
