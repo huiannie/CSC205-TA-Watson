@@ -3,9 +3,11 @@
 This is a simple starter template for CSC205 students who want to start building an intelligent 
 Q&A agent for CSC205.
 
-Source: This template is modified from Watson's conversational agent starter kit (see https://github.com/watson-developer-cloud/conversational-agent-application-starter-kit) 
+Source: This template is modified from <it> Watson's conversational agent starter kit </it> (see https://github.com/watson-developer-cloud/conversational-agent-application-starter-kit) 
 provided by IBM under the Apache2 license. 
 
+Students interested in using this template to build the TA (teaching assistant) for CSC205 may use 
+the <it>Watson's conversational agent starter kit </it> as a warmup before starting on this project.
 
 ### How it works
 
@@ -24,6 +26,19 @@ confidence level.
 Next, the server submits the classification result along with the original text input to the 
 dialog service. To provide the classification result to the dialog, the server updates the 
 profile of the dialog based on the classes computed by the classifier.
+
+
+### Services needed
+
+The two Watson services required by this application are the Classifier and the Dialog.
+These two services must be added to the Bluemix account prior to development. 
+Details on how to set up these services may be found in the 
+<it>Watson's conversational agent starter kit </it>.
+
+In order for the application to bind to the services, the two services must be named that 
+match the service names listed in the `manifest.yml` file. 
+So the dialog service should be named <it>dialog-service</it> 
+and the classifier service should be named <it>natural-language-classifier-service</it>
 
 
 ### How to train the classifier
