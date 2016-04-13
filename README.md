@@ -35,10 +35,10 @@ These two services must be added to the Bluemix account prior to development.
 Details on how to set up these services may be found in the 
 <em>Watson's conversational agent starter kit </em>.
 
-In order for the application to bind to the services, the two services must be named that 
+In order for the application to bind to the services, the two services must have names that 
 match the service names listed in the `manifest.yml` file. 
-So the dialog service should be named <em>dialog-service</em> 
-and the classifier service should be named <em>natural-language-classifier-service</em>
+So the dialog service should be named <b>dialog-service</b> 
+and the classifier service should be named <b>natural-language-classifier-service</b>
 
 
 ### How to train the classifier
@@ -87,8 +87,8 @@ in the `training/dialog_id` so that this dialog may be used permanently.
 
 When deploying this application to Bluemix, the application must have a unique URL. 
 To ensure this, open the `manifest.yml` file and change the host entry from
-<em> host: csc205-TA-Watson </em> 
+<b> host: csc205-TA-Watson </b> 
 to 
-<em> host: csc205-TA-Watson-<username> </em>
+<b> host: csc205-TA-Watson-<username> </b>
 or another other name before building and deploying the application. 
 
