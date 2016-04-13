@@ -18,4 +18,4 @@ applications:
     NODE_ENV: production
     SECURE_EXPRESS: 1
     NPM_CONFIG_PRODUCTION: false
-  host: csc205
+  host: csc205-TA-Watson
